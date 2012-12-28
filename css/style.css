@@ -24,6 +24,7 @@ font-size: 52px;
 margin: 0 auto;
 width: 138px;
 font-family: 'Fjalla One', sans-serif;
+z-index: 10;
 }
 
 .ska{
