@@ -348,8 +348,9 @@ font-weight: 900;
               transform: translateZ( -10px ) rotateX(   90deg );
     }
 
-
-
+/* Thanks Cam Juarez! */
+.container { padding: 0 }
+.row { max-width: 100% }
 /* /////////////////////////////////////////////////////////MEDIA QUERY 1/////////////////////////////////////////////////////////////// */
 @media only screen and (max-width: 1023px) {
 .titleStitch {
