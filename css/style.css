@@ -19,7 +19,7 @@ top: 120px;
 
 .againTag{
 position: relative;
-top: -2px;
+top: -38px;
 font-size: 52px;
 margin: 0 auto;
 width: 138px;
@@ -357,6 +357,18 @@ margin: 0 auto;
 width: 551px;
 position: relative;
 top: -3px;
+}
+.titleRow{
+	height: 128px;
+}
+
+.excuseTag{
+	margin: 0 auto;
+width: 550px;
+top: -2px;
+position: relative;
+text-align: center;
+font-size: 25px;
 }
 
 .titleRow h1 {
