@@ -19,7 +19,7 @@ top: 120px;
 
 .againTag{
 position: relative;
-top: -74px;
+top: -2px;
 font-size: 52px;
 margin: 0 auto;
 width: 138px;
@@ -214,12 +214,11 @@ color: #181820;
 
 
 .excuseTag{
-width: 20%;
-height: 290px;
-margin-left: 80px;
-position: absolute;
-font-size: 32px;
-font-weight: 900;
+margin: 0 auto;
+width: 1006px;
+position: relative;
+text-align: center;
+font-size: 36px;
 }
 
 .ink {
