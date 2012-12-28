@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+	<title>Magic L8 Ball</title>
+
+	<link rel="stylesheet" href="css/theGrid.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<style media="screen">
+
+    
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+	<div class="row titleRow">
+		<div class="twelveCol">
+			<div class="label">
+				<div class="titleStitch">
+					<h1>MAGIC L8 BALL</h1>
+				</div>
+				<div class="mottoStitch">
+					<h5>you dropped the ball so we found you another...</h5>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row magicRow">
+		<div class="twelveCol table">
+		<div class="excuseTag"></div>
+				<div class="stick"><div class="ska"></div><div class="deedle"></div></div>	
+			<div class="sector">
+			<div class="cue">
+				<a href="#serious" class="seriousExcuse">Serious Excuse</a>
+				<a href="#funny" class="sillyExcuse">Snarky Excuse</a>
+				<a href="#cult" class="cultExcuse">Cult Classic Excuse</a>
+				
+			</div>
+			 <div class="ball">
+			 	<div class="innerWindow">
+			 	<section class="ink">
+			    <div id="cube" class="show-front">
+				    <figure class="front">1</figure>
+				    <figure class="back">2</figure>
+				    <figure class="right">3</figure>
+				    <figure class="left">4</figure>
+				    <figure class="top">5</figure>
+				    <figure class="bottom">6</figure>
+				</div>
+				</section>
+
+			 	<div class="innerCircle">
+			 	<div class="L8">
+			 	8
+			 	</div>
+			 	</div>
+			 	</div>
+			 </div>
+			
+			</div>
+		</div>
+		
+	</div>
+<div class="againTag"><a href="http://aslan11.github.com/lateBall" style="text-decoration: none; color: black;">Again?</a></div>
+
+</div>
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script>
+//Global Variables
+var $winWidth = $(window).width();
+var rollLength = $winWidth * -.63545454;
+var startDegree
+var startTranslate
+var drawLength = $('.stick').width() + 10;
+var $yizzo = 0;
+
+$(document).ready(function(){
+	$('.excuseTag').fadeOut();
+	$('.againTag').fadeOut();
+	var $shtick = $(".stick");
+	var $elie = $(".ball");
+	
+	draw(0)
+	  function draw(translation){
+		   $($shtick).css({ WebkitTransform: 'translate(' + -translation + 'px)'});
+		  if(translation < drawLength){
+			  setTimeout(function() { draw((translation + 5)) }, .5);
+		  }
+	      else{
+		      $yizzo = translation;	
+	      };
+			   
+	  };
+		  
+		  
+	    
+});
+
+
+var show = $('#cube').attr('class');
+var z;
+$('.titleStitch').on("click", function(){
+			show = $('#cube').attr('class');
+		$('#cube').removeClass(show);
+	    z = ((Math.floor(Math.random()*5)) + 1);
+		if ( z == 1 ){
+    		$('#cube').addClass('show-front');
+		}
+		else if( z == 2 ){
+    		$('#cube').addClass('show-back');
+		}
+		else if( z == 3 ){
+    		$('#cube').addClass('show-right');
+		}
+		else if( z == 4 ){
+    		$('#cube').addClass('show-left');
+		}
+		else if( z == 5 ){
+    		$('#cube').addClass('show-top');
+		}
+		else if( z == 6 ){
+    		$('#cube').addClass('show-bottom');
+		}
+});
+
+$('.cultExcuse').on('click', function(){
+	var $elie = $(".ball");
+	var $shtick = $(".stick");
+	draw(-$yizzo)
+	  function draw(translation){
+		   $($shtick).css({ WebkitTransform: 'translate(' + translation + 'px)'});
+		  if(translation < 0){
+			  setTimeout(function() { draw((translation + 5)) }, .5);
+		  }
+	      else{
+		      $shtick.fadeOut();
+		      unroll(0,0);
+	      };
+			   
+	  };
+	$('.cue').children().fadeOut();
+	
+	function unroll(degree, translation) {
+
+      // For webkit browsers: e.g. Chrome, Safari
+      $elie.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
+      $('.sector').css({ WebkitTransform: 'translate(' + translation + 'px)'});
+      // For Mozilla browser: e.g. Firefox
+      $elie.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
+      
+     
+      // Animate rotation with a recursive call
+      if(translation < (-1 * rollLength)){
+      setTimeout(function() { unroll(++degree, (translation + 3)) }, .5);
+      }
+      else{
+      startDegree = degree;
+      startTranslate = translation;
+      $('.cue').fadeOut();
+      roll(startDegree, startTranslate);
+    function roll(degree, translation) {
+	    	// For webkit browsers: e.g. Chrome
+	    	$elie.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
+	    	$('.sector').css({ WebkitTransform: 'translate(' + translation + 'px)'});
+	    	// For Mozilla browser: e.g. Firefox
+	    	$elie.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
+	    	// Animate rotation with a recursive call
+	    	if(translation > 0){
+		    	setTimeout(function() { roll(--degree, (translation - 3)) }, .5);
+		    };
+		    //Fade out 8 to show the cube
+		    if(translation <= -0){
+			    $('.innerCircle').fadeOut();
+			    var show = $('#cube').attr('class');
+			    var z;
+			    show = $('#cube').attr('class');
+			    $('#cube').removeClass(show);
+			    z = ((Math.floor(Math.random()*6)) + 1);
+			    if ( z == 1 ){
+				    $('#cube').addClass('show-front');
+				    $('.excuseTag').text('CULT CLASSIC LATE EXCUSE #1: I was returning video tapes. [AMERICAN PSYCHO]')
+				}
+				else if( z == 2 ){
+					$('#cube').addClass('show-back');
+					$('.excuseTag').text('CULT CLASSIC LATE EXCUSE #2: Yeah, well, you know, that\'s just like, your opinion man. [THE BIG LEBOWSKI]')
+				}
+				else if( z == 3 ){
+					$('#cube').addClass('show-right');
+					$('.excuseTag').text('CULT CLASSIC LATE EXCUSE #3: No... uh... I was working late... I love work... I love life. [GRANDMA\'S BOY]')
+				}
+				else if( z == 4 ){
+					$('#cube').addClass('show-left');
+					$('.excuseTag').text('CULT CLASSIC LATE EXCUSE #4: The 1st rule says I can\'t talk about it. [FIGHT CLUB]')
+				}
+				else if( z == 5 ){
+					$('#cube').addClass('show-top');
+					$('.excuseTag').text('CULT CLASSIC LATE EXCUSE #5: I love lamp. [ANCHORMAN]')
+				}
+				else if( z == 6 ){
+					$('#cube').addClass('show-bottom');
+					$('.excuseTag').text('CULT CLASSIC LATE EXCUSE #6:  Well, congratu-fuckin\'-lations, your dream has come true! [HAROLD & KUMAR]')
+				}
+				$('.excuseTag').fadeIn();
+				$('.againTag').fadeIn();
+			};
+		}
+
+      };
+      
+    }
+});
+
+$('.seriousExcuse').on('click', function(){
+	var $elie = $(".ball");
+	var $shtick = $(".stick");
+	draw(-$yizzo)
+	  function draw(translation){
+		   $($shtick).css({ WebkitTransform: 'translate(' + translation + 'px)'});
+		  if(translation < 0){
+			  setTimeout(function() { draw((translation + 5)) }, .5);
+		  }
+	      else{
+		      $shtick.fadeOut();
+		      unroll(0,0);
+	      };
+			   
+	  };
+	$('.cue').children().fadeOut();
+	
+	function unroll(degree, translation) {
+
+      // For webkit browsers: e.g. Chrome, Safari
+      $elie.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
+      $('.sector').css({ WebkitTransform: 'translate(' + translation + 'px)'});
+      // For Mozilla browser: e.g. Firefox
+      $elie.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
+      
+     
+      // Animate rotation with a recursive call
+      if(translation < (-1 * rollLength)){
+      setTimeout(function() { unroll(++degree, (translation + 3)) }, .5);
+      }
+      else{
+      startDegree = degree;
+      startTranslate = translation;
+      $('.cue').fadeOut();
+      roll(startDegree, startTranslate);
+    function roll(degree, translation) {
+	    	// For webkit browsers: e.g. Chrome
+	    	$elie.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
+	    	$('.sector').css({ WebkitTransform: 'translate(' + translation + 'px)'});
+	    	// For Mozilla browser: e.g. Firefox
+	    	$elie.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
+	    	// Animate rotation with a recursive call
+	    	if(translation > 0){
+		    	setTimeout(function() { roll(--degree, (translation - 3)) }, .5);
+		    };
+		    //Fade out 8 to show the cube
+		    if(translation <= -0){
+			    $('.innerCircle').fadeOut();
+			    var show = $('#cube').attr('class');
+			    var z;
+			    show = $('#cube').attr('class');
+			    $('#cube').removeClass(show);
+			    z = ((Math.floor(Math.random()*6)) + 1);
+			    if ( z == 1 ){
+				    $('#cube').addClass('show-front');
+				    $('.excuseTag').text('SERIOUS LATE EXCUSE #1: Car Trouble')
+				}
+				else if( z == 2 ){
+					$('#cube').addClass('show-back');
+					$('.excuseTag').text('SERIOUS LATE EXCUSE #2: Lost Car Keys')
+				}
+				else if( z == 3 ){
+					$('#cube').addClass('show-right');
+					$('.excuseTag').text('SERIOUS LATE EXCUSE #3: Power Outage')
+				}
+				else if( z == 4 ){
+					$('#cube').addClass('show-left');
+					$('.excuseTag').text('SERIOUS LATE EXCUSE #4: Pulled Over')
+				}
+				else if( z == 5 ){
+					$('#cube').addClass('show-top');
+					$('.excuseTag').text('SERIOUS LATE EXCUSE #5: Personal Call From Governor')
+				}
+				else if( z == 6 ){
+					$('#cube').addClass('show-bottom');
+					$('.excuseTag').text('SERIOUS LATE EXCUSE #6: Jury Duty')
+				}
+				$('.excuseTag').fadeIn();
+				$('.againTag').fadeIn();
+			};
+		}
+
+      };
+      
+    }
+});
+
+$('.sillyExcuse').on('click', function(){
+	var $elie = $(".ball");
+	var $shtick = $(".stick");
+	draw(-$yizzo)
+	  function draw(translation){
+		   $($shtick).css({ WebkitTransform: 'translate(' + translation + 'px)'});
+		  if(translation < 0){
+			  setTimeout(function() { draw((translation + 5)) }, .5);
+		  }
+	      else{
+		      $shtick.fadeOut();
+		      unroll(0,0);
+	      };
+			   
+	  };
+	$('.cue').children().fadeOut();
+	
+	function unroll(degree, translation) {
+
+      // For webkit browsers: e.g. Chrome, Safari
+      $elie.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
+      $('.sector').css({ WebkitTransform: 'translate(' + translation + 'px)'});
+      // For Mozilla browser: e.g. Firefox
+      $elie.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
+      
+     
+      // Animate rotation with a recursive call
+      if(translation < (-1 * rollLength)){
+      setTimeout(function() { unroll(++degree, (translation + 3)) }, .5);
+      }
+      else{
+      startDegree = degree;
+      startTranslate = translation;
+      $('.cue').fadeOut();
+      roll(startDegree, startTranslate);
+    function roll(degree, translation) {
+	    	// For webkit browsers: e.g. Chrome
+	    	$elie.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
+	    	$('.sector').css({ WebkitTransform: 'translate(' + translation + 'px)'});
+	    	// For Mozilla browser: e.g. Firefox
+	    	$elie.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
+	    	// Animate rotation with a recursive call
+	    	if(translation > 0){
+		    	setTimeout(function() { roll(--degree, (translation - 3)) }, .5);
+		    };
+		    //Fade out 8 to show the cube
+		    if(translation <= -0){
+			    $('.innerCircle').fadeOut();
+			    var show = $('#cube').attr('class');
+			    var z;
+			    show = $('#cube').attr('class');
+			    $('#cube').removeClass(show);
+			    z = ((Math.floor(Math.random()*6)) + 1);
+			    if ( z == 1 ){
+				    $('#cube').addClass('show-front');
+				    $('.excuseTag').text('SNARKY LATE EXCUSE #1: I didn\'t think you\'d notice when I came in.')
+				}
+				else if( z == 2 ){
+					$('#cube').addClass('show-back');
+					$('.excuseTag').text('SNARKY LATE EXCUSE #2: You should have told me to be here on time.')
+				}
+				else if( z == 3 ){
+					$('#cube').addClass('show-right');
+					$('.excuseTag').text('SNARKY LATE EXCUSE #3: I\'m not late. I decided to change my hours to make them more convenient.')
+				}
+				else if( z == 4 ){
+					$('#cube').addClass('show-left');
+					$('.excuseTag').text('SNARKY LATE EXCUSE #4: I\'m not late, I had no intention of getting here before this very moment.')
+				}
+				else if( z == 5 ){
+					$('#cube').addClass('show-top');
+					$('.excuseTag').text('SNARKY LATE EXCUSE #5: I thought my commute time counted toward my work hours.')
+				}
+				else if( z == 6 ){
+					$('#cube').addClass('show-bottom');
+					$('.excuseTag').text('SNARKY LATE EXCUSE #6: I ran out of fucks to give.')
+				}
+				$('.excuseTag').fadeIn();
+				$('.againTag').fadeIn();
+			};
+		}
+
+      };
+      
+    }
+});
+</script>
+</body>
+
+</html>
