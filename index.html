@@ -89,6 +89,7 @@ $(document).ready(function(){
 	draw(0)
 	  function draw(translation){
 		   $($shtick).css({ WebkitTransform: 'translate(' + -translation + 'px)'});
+		   $($shtick).css({ "-moz-transform": 'translate(' + -translation + 'px)'});
 		  if(translation < drawLength){
 			  setTimeout(function() { draw((translation + 5)) }, .5);
 		  }
@@ -135,6 +136,8 @@ $('.cultExcuse').on('click', function(){
 	draw(-$yizzo)
 	  function draw(translation){
 		   $($shtick).css({ WebkitTransform: 'translate(' + translation + 'px)'});
+		   $($shtick).css({ "-moz-transform": 'translate(' + translation + 'px)'});
+		   
 		  if(translation < 0){
 			  setTimeout(function() { draw((translation + 5)) }, .5);
 		  }
@@ -152,8 +155,8 @@ $('.cultExcuse').on('click', function(){
       $elie.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
       $('.sector').css({ WebkitTransform: 'translate(' + translation + 'px)'});
       // For Mozilla browser: e.g. Firefox
-      $elie.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
-      
+      $elie.css({ "-moz-transform": 'rotate(' + degree + 'deg)'});
+      $('.sector').css({ "-moz-transform": 'translate(' + translation + 'px)'});
      
       // Animate rotation with a recursive call
       if(translation < (-1 * rollLength)){
@@ -163,13 +166,14 @@ $('.cultExcuse').on('click', function(){
       startDegree = degree;
       startTranslate = translation;
       $('.cue').fadeOut();
-      roll(startDegree, startTranslate);
+      
     function roll(degree, translation) {
 	    	// For webkit browsers: e.g. Chrome
 	    	$elie.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
 	    	$('.sector').css({ WebkitTransform: 'translate(' + translation + 'px)'});
 	    	// For Mozilla browser: e.g. Firefox
 	    	$elie.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
+	    	$('.sector').css({ "-moz-transform": 'translate(' + translation + 'px)'});
 	    	// Animate rotation with a recursive call
 	    	if(translation > 0){
 		    	setTimeout(function() { roll(--degree, (translation - 3)) }, .5);
@@ -210,7 +214,7 @@ $('.cultExcuse').on('click', function(){
 				$('.againTag').fadeIn();
 			};
 		}
-
+		roll(startDegree, startTranslate);
       };
       
     }
@@ -222,6 +226,7 @@ $('.seriousExcuse').on('click', function(){
 	draw(-$yizzo)
 	  function draw(translation){
 		   $($shtick).css({ WebkitTransform: 'translate(' + translation + 'px)'});
+		   $($shtick).css({ "-moz-transform": 'translate(' + translation + 'px)'});
 		  if(translation < 0){
 			  setTimeout(function() { draw((translation + 5)) }, .5);
 		  }
@@ -239,7 +244,8 @@ $('.seriousExcuse').on('click', function(){
       $elie.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
       $('.sector').css({ WebkitTransform: 'translate(' + translation + 'px)'});
       // For Mozilla browser: e.g. Firefox
-      $elie.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
+      $elie.css({ "-moz-transform": 'rotate(' + degree + 'deg)'});
+      $('.sector').css({ "-moz-transform": 'translate(' + translation + 'px)'});
       
      
       // Animate rotation with a recursive call
@@ -250,13 +256,14 @@ $('.seriousExcuse').on('click', function(){
       startDegree = degree;
       startTranslate = translation;
       $('.cue').fadeOut();
-      roll(startDegree, startTranslate);
+      
     function roll(degree, translation) {
 	    	// For webkit browsers: e.g. Chrome
 	    	$elie.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
 	    	$('.sector').css({ WebkitTransform: 'translate(' + translation + 'px)'});
 	    	// For Mozilla browser: e.g. Firefox
-	    	$elie.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
+	    	$elie.css({ "-moz-transform": 'rotate(' + degree + 'deg)'});
+      $('.sector').css({ "-moz-transform": 'translate(' + translation + 'px)'});
 	    	// Animate rotation with a recursive call
 	    	if(translation > 0){
 		    	setTimeout(function() { roll(--degree, (translation - 3)) }, .5);
@@ -297,7 +304,7 @@ $('.seriousExcuse').on('click', function(){
 				$('.againTag').fadeIn();
 			};
 		}
-
+		roll(startDegree, startTranslate);
       };
       
     }
@@ -309,6 +316,7 @@ $('.sillyExcuse').on('click', function(){
 	draw(-$yizzo)
 	  function draw(translation){
 		   $($shtick).css({ WebkitTransform: 'translate(' + translation + 'px)'});
+		   $($shtick).css({ "-moz-transform": 'translate(' + translation + 'px)'});
 		  if(translation < 0){
 			  setTimeout(function() { draw((translation + 5)) }, .5);
 		  }
@@ -326,8 +334,8 @@ $('.sillyExcuse').on('click', function(){
       $elie.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
       $('.sector').css({ WebkitTransform: 'translate(' + translation + 'px)'});
       // For Mozilla browser: e.g. Firefox
-      $elie.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
-      
+      $elie.css({ "-moz-transform": 'rotate(' + degree + 'deg)'});
+      $('.sector').css({ "-moz-transform": 'translate(' + translation + 'px)'});
      
       // Animate rotation with a recursive call
       if(translation < (-1 * rollLength)){
@@ -337,13 +345,14 @@ $('.sillyExcuse').on('click', function(){
       startDegree = degree;
       startTranslate = translation;
       $('.cue').fadeOut();
-      roll(startDegree, startTranslate);
+     
     function roll(degree, translation) {
 	    	// For webkit browsers: e.g. Chrome
 	    	$elie.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
 	    	$('.sector').css({ WebkitTransform: 'translate(' + translation + 'px)'});
 	    	// For Mozilla browser: e.g. Firefox
 	    	$elie.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
+	    	$('.sector').css({ "-moz-transform": 'translate(' + translation + 'px)'});
 	    	// Animate rotation with a recursive call
 	    	if(translation > 0){
 		    	setTimeout(function() { roll(--degree, (translation - 3)) }, .5);
@@ -384,7 +393,7 @@ $('.sillyExcuse').on('click', function(){
 				$('.againTag').fadeIn();
 			};
 		}
-
+		 roll(startDegree, startTranslate);
       };
       
     }
